@@ -17,7 +17,7 @@ class Exercise(models.Model):
     """
     An exercise refers to each individual exercise to be performed in a workout.
     An exercise has sets which refers to how many times it should be performed per workout
-    An exercise has reps which refers to how many repititions it should be performed per set
+    An exercise has reps which refers to how many repetitions it should be performed per set
 
     For the purpose of this project, several of the same exercise can exist if 2 or more instances have different sets
     or reps. I.E "Benchpress" in workoutA may need to be performed for 3 sets and 10 reps. Whereas in workoutB it may
@@ -89,7 +89,7 @@ class Routine(models.Model):
         TODO: Handle case where 0 records returned (I.E session_length__lte=30)
         """
         if type(prioritize) != tuple or type(classifier_type) != str or type(prioritize[1]) != int:
-            raise TypeError("classifier_type accepts strings, prioritize bust be 2ary-tuple with an int for 2nd value")
+            raise TypeError("classifier_type accepts strings, prioritize must be 2ary-tuple with an int for 2nd value")
 
         filename = classifier_type + "_" + prioritize[0].lower() + '_' + (str(prioritize[1]) if prioritize[0]
                                   not in ["days_per_week", "session_length"] else 'lte_' + str(prioritize[1])) + '.pkl'
@@ -109,7 +109,6 @@ class Routine(models.Model):
         elif prioritize[0].lower() == "session_length":
             routines = routines.filter(session_length__lte=prioritize[1])
 
-        assert len(routines) > 0
 
         # Shape DataFrame
         routine_df = pd.DataFrame({

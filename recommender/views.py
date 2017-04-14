@@ -4,30 +4,30 @@ from recommender.forms import RoutineForm
 from django.template import Context, Template
 from sklearn.externals import joblib
 
+from recommender.models import Routine, Exercise, Workout
+from recommender.serializers import ExerciseSerializer, WorkoutSerializer, RoutineSerializer
+from rest_framework import generics, renderers
+from rest_framework import permissions
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
 # Create your views here.
 
 
-def make_classification(a_list):
-    """
-    Unchecked precondition: Classifier has not changed. If changed, gen new Classifier
-    """
-    routine_classifier = joblib.load('recommender/routine_classifier.pkl')
-    result = routine_classifier.predict([a_list])
-    return result[0]
+class RoutineList(generics.ListAPIView):
+    queryset = Routine.objects.all()
+    serializer_class = RoutineSerializer
 
 
-def home(request):
-    if request.method == 'POST':
-        user_list = [request.POST["goal"], request.POST["equipment_use"],
-                     request.POST["days_per_week"], request.POST["session_length"]]
-        request.session['user_list'] = [int(i) for i in user_list]
-        return redirect('/result')
-    f = RoutineForm()
-    return render(request, 'home.html', {'form': f.as_p()})
+class ExerciseList(generics.ListAPIView):
+    queryset = Exercise.objects.all()
+    serializer_class = ExerciseSerializer()
 
 
-def result(request):
-    if request.session['user_list']:
-        user_list = request.session.pop('user_list', False)
-        result = make_classification(user_list)
-    return HttpResponse("Your recommmended routine is: %s" %result)
+class WorkoutList(generics.ListAPIView):
+    queryset = Exercise.objects.all()
+    serializer_class = WorkoutSerializer()
+
+
+

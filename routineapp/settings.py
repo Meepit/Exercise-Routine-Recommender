@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'recommender',
     'progress',
     'user_profiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
