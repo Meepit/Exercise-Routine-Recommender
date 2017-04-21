@@ -14,5 +14,5 @@ class Profile(models.Model):
     routine = models.ForeignKey(Routine)
 
     def __str__(self):
-        return self.user.name + ": " + self.routine.name
+        return self.user.username + ": " + self.routine.name
 

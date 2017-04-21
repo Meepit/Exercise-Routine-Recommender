@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'progress',
     'user_profiles',
     'rest_framework',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +117,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+}
 
 
 # Static files (CSS, JavaScript, Images)

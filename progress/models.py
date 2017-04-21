@@ -14,11 +14,11 @@ class Progress(models.Model):
     """
     date = models.DateField(default=date.today)
     quantity = models.IntegerField()
-    User = models.ForeignKey(User)
-    Exercise = models.ForeignKey(Exercise)
+    user = models.ForeignKey(User)
+    exercise = models.ForeignKey(Exercise)
 
     def __str__(self):
-        return self.User.name + " " + self.Exercise.name.split("x")[0][:-2] + " " + self.date
+        return self.user.username + " " + self.exercise.name.split("x")[0][:-2] + " " + str(self.date)
 
 
 
