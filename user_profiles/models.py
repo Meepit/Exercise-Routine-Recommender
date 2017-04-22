@@ -11,8 +11,8 @@ class Profile(models.Model):
     In this case Profile is currently just being used to link a routine. This is preferred method from django docs.
     """
     user = models.OneToOneField(User)
-    routine = models.ForeignKey(Routine)
+    routine = models.ForeignKey(Routine, blank=True, null=True)
 
     def __str__(self):
-        return self.user.username + ": " + self.routine.name
+        return self.user.username + " Profile"
 

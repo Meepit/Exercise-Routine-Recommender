@@ -19,6 +19,9 @@ class UserCreate(generics.CreateAPIView):
         Staff and superusers should be created through admin page
         """
         serializer.save(is_staff=False, is_superuser=False)
+        # Get saved user and create profile
+        created_user = User.objects.get(username=dict(serializer.data)["username"])
+        Profile.objects.create(user=created_user)
 
 
 class UserDetail(generics.RetrieveAPIView):
