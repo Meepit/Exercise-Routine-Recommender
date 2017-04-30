@@ -25,3 +25,8 @@ class ProgressList(generics.ListCreateAPIView):
         Hook into create method to set user to currently logged in user.
         """
         serializer.save(user=self.request.user)
+
+
+class ProgressDetail(generics.RetrieveAPIView):
+    queryset = Progress.objects.all()
+    serializer_class = ProgressSerializer

@@ -24,7 +24,7 @@ class UserCreate(generics.CreateAPIView):
         Profile.objects.create(user=created_user)
 
 
-class UserDetail(generics.RetrieveAPIView):
+class UserDetail(generics.RetrieveUpdateAPIView):
     permission_classes = (IsOwnerOrAdmin,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

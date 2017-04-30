@@ -5,7 +5,7 @@ from recommender.models import Exercise
 from recommender.serializers import ExerciseSerializer
 
 
-class ProgressSerializer(serializers.ModelSerializer):
+class ProgressSerializer(serializers.HyperlinkedModelSerializer):
     # Exercise = ExerciseSerializer(many=True, read_only=True)
     class Meta:
         model = Progress

@@ -5,7 +5,7 @@ from recommender.serializers import RoutineSerializer
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):#serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password', 'first_name', 'last_name', 'email')
@@ -21,12 +21,12 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class ProfileSerializer(serializers.ModelSerializer):
-    routine = RoutineSerializer(many=False, read_only=True)
+class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(many=False, read_only=True)
-    progress = ProgressSerializer(many=True, read_only=True)
+    routine = serializers.HyperlinkedRelatedField(view_name='routine-detail', format='html', read_only=True)
+    get_progress = serializers.HyperlinkedIdentityField(many=True, view_name='progress-detail', format='html')
 
     class Meta:
         model = Profile
-        fields = ('id', 'user', 'routine', 'progress')
+        fields = ('id', 'user', 'routine', 'get_progress')
 

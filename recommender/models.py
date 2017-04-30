@@ -22,7 +22,6 @@ class Exercise(models.Model):
     For the purpose of this project, several of the same exercise can exist if 2 or more instances have different sets
     or reps. I.E "Benchpress" in workoutA may need to be performed for 3 sets and 10 reps. Whereas in workoutB it may
     need to be performed for 5 sets and 5 reps. This will result in 2 separate entries.
-
     Naming convention: Exercise name lowercase followed by no. sets followed by x followed by no. reps
                       I.E squat 5x5, benchpress 3x10
     """

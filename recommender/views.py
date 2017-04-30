@@ -29,6 +29,6 @@ class ExerciseDetail(generics.RetrieveAPIView):
     serializer_class = ExerciseSerializer
 
 
-
-
-
+class WorkoutDetail(generics.RetrieveAPIView):
+    queryset = Workout.objects.all()
+    serializer_class = WorkoutSerializer

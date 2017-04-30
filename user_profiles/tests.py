@@ -1,9 +1,8 @@
 from django.urls import reverse
 from django.contrib.auth.models import User
-from rest_framework.test import APIRequestFactory
-from rest_framework.test import force_authenticate
+import json
+from rest_framework.test import APIRequestFactory, APITestCase, force_authenticate
 from rest_framework import status
-from rest_framework.test import APITestCase
 from user_profiles.views import UserDetail
 
 
@@ -78,17 +77,54 @@ class UserTests(APITestCase):
 
 
 class ProfileTests(APITestCase):
-    def test_profile_creation(self):
+    def test_successful_profile_creation(self):
+        """"
+        Test that profiles are successfully automatically constructed on User creation.
+        """
         data = create_user_data(default=True)
         url = reverse('user-create')
         self.client.post(url, data, format='json')
         user_id = User.objects.get(username=data["username"]).pk
         factory = APIRequestFactory()
-        user = User.objects.get(username=data.username)
+        user = User.objects.get(username=data["username"])
         view = UserDetail.as_view()
-
-        request = factory.get('/api/users/%s' % user_id)
+        # Authenticate
+        request = factory.get('/api/users')
         force_authenticate(request, user=user)
-        response = view(request)
-        print(response.status_code)
+        response = view(request, pk=user_id)
+        response_content = response.render().content.decode('utf8')
+        response_content = json.loads(response_content)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response_content["user"]["username"], data["username"])
+        self.assertEqual(response_content["routine"], None)
 
+    def test_no_profile_on_bad_creation(self):
+        """
+        Test that a profile is not created if User creation fails.
+        """
+        data = create_user_data()
+        url = reverse('user-create')
+        self.client.post(url, data, format='json')
+        response = self.client.get('/api/users/1')
+        self.assertEqual(response.content.decode('utf8'), '')
+
+    def test_permissions(self):
+        """
+        Test authenticated users only have access to their own data
+        """
+        data_user_1 = create_user_data(username="user1", password="testpassword")
+        data_user_2 = create_user_data(username="user2", password="testpassword22")
+        url = reverse('user-create')
+        self.client.post(url, data_user_1, format='json')
+        self.client.post(url, data_user_2, format='json')
+        user1 = User.objects.get(username="user1")
+        user2 = User.objects.get(username="user2")
+        factory = APIRequestFactory()
+        view = UserDetail.as_view()
+        # Authenticate as user 1 and try to view user2 profile data
+        request = factory.get('/api/users/%s' % user1.pk)
+        force_authenticate(request, user=user1)
+        response = view(request, pk=user2.pk)
+        response_content = response.render().content.decode('utf8')
+        response_content = json.loads(response_content)
+        self.assertIn("You do not have permission", response_content["detail"])
