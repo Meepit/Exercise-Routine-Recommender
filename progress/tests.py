@@ -64,4 +64,3 @@ class ProgressTests(APITestCase):
         response_content = json.loads(response_content)
         self.assertEqual(response_content["detail"], "Authentication credentials were not provided.")
 
-    

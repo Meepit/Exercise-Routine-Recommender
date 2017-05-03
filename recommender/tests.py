@@ -54,6 +54,7 @@ class RoutineTests(APITestCase):
         response_content = json.loads(response_content)
         self.assertEqual(response_content["routine"], "http://testserver/api/routines/1/")
 
+"""Classification tests run outside test environment"""
 
 
 
