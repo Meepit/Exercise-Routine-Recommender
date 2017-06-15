@@ -15,16 +15,25 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework_jwt.views import obtain_jwt_token
+
+from ang.views import AngularTemplateView
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('recommender.urls')),
     url(r'^api/', include('progress.urls')),
     url(r'^api/', include('user_profiles.urls')),
+    url(r'auth/token/$', obtain_jwt_token),  # Creates token on post for token based authentication
+    url(r'^api/templates/(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AngularTemplateView.as_view()), # Load individual templates
+
 ]
 
+urlpatterns += [url(r'', TemplateView.as_view(template_name='ang/index.html'))]  # Add angular index page
+
 # Login and logout views for the browsable API
-urlpatterns += [
-    url(r'^api-auth/', include('rest_framework.urls',
-                               namespace='rest_framework')),
-]
+#urlpatterns += [
+#    url(r'^api-auth/', include('rest_framework.urls',
+#                               namespace='rest_framework')),
+#]

@@ -59,7 +59,7 @@ ROOT_URLCONF = 'routineapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +120,11 @@ USE_TZ = True
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+                                       'rest_framework.authentication.SessionAuthentication',
+                                       'rest_framework.authentication.BasicAuthentication',)
 }
 
 
@@ -128,3 +132,7 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

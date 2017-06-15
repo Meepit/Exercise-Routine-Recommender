@@ -54,6 +54,6 @@ class MakeClassification(views.APIView):
                                                      post_dict["equipment_needed"],
                                                      post_dict["days_per_week"],
                                                      post_dict["session_length"]]])
-            return Response({"Success": suggested_routine})
+            return Response({"Routine": suggested_routine})
 
 

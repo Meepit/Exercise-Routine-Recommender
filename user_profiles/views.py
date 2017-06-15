@@ -5,6 +5,8 @@ from user_profiles.permissions import IsOwnerOrAdmin
 from user_profiles.serializers import ProfileSerializer, UserSerializer
 from rest_framework import generics, renderers, permissions
 
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
 # Create your views here.
 
 
@@ -26,6 +28,7 @@ class UserCreate(generics.CreateAPIView):
 
 class UserDetail(generics.RetrieveUpdateAPIView):
     permission_classes = (IsOwnerOrAdmin,)
+    authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 

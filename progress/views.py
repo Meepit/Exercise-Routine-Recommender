@@ -2,11 +2,15 @@
 from progress.models import Progress
 from progress.serializers import ProgressSerializer
 from rest_framework import generics, renderers, permissions
+from rest_framework.response import Response
+
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 class ProgressList(generics.ListCreateAPIView):
     serializer_class = ProgressSerializer
     permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (JSONWebTokenAuthentication,)
 
     def get_queryset(self):
         """
