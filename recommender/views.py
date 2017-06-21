@@ -10,32 +10,43 @@ from sklearn.externals import joblib
 
 
 class RoutineList(generics.ListAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = Routine.objects.all()
     serializer_class = RoutineSerializer
 
 
 class RoutineDetail(generics.RetrieveAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = Routine.objects.all()
     serializer_class = RoutineSerializer
 
 
 class ExerciseList(generics.ListAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
 
 
 class ExerciseDetail(generics.RetrieveAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
 
 
 class WorkoutDetail(generics.RetrieveAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
 
 
 class MakeClassification(views.APIView):
-    permission_classes = []
+    authentication_classes = ()
+    permission_classes = ()
 
     def post(self, request, *args, **kwargs):
         post_dict = {

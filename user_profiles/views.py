@@ -27,7 +27,7 @@ class UserCreate(generics.CreateAPIView):
 
 
 class UserDetail(generics.RetrieveUpdateAPIView):
-    permission_classes = (IsOwnerOrAdmin,)
+    #permission_classes = (IsOwnerOrAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

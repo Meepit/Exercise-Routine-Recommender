@@ -9,16 +9,17 @@ angular.module('routine').
             ){
 
             $locationProvider.html5Mode({
-                enabled:true})
+                enabled:true
+                })
             $resourceProvider.defaults.stripTrailingSlashes = false;
             $routeProvider.
                 when("/", {
-                    template: // Create home template
+                    template: "Home page"// Create home template
                 }).
                 when("/login", {
-                    template: // create login template
+                    template: "Login page"// create login template
                 }).
                 otherwise({
                     template: "Page not found"
-                    })
-            });
+                })
+         });

@@ -30,7 +30,7 @@ urlpatterns = [
 
 ]
 
-urlpatterns += [url(r'', TemplateView.as_view(template_name='ang/index.html'))]  # Add angular index page
+urlpatterns += [url(r'^$', TemplateView.as_view(template_name='ang/index.html'))]  # Add angular index page
 
 # Login and logout views for the browsable API
 #urlpatterns += [

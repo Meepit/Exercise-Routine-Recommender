@@ -4,6 +4,9 @@ angular.module('routine', [
     // external
     'ngCookies',
     'ngRoute',
+    'ngResource',
+    'ui.bootstrap',
     // internal
-    'login',
+    'navBar',
+    //'login',
 ]);
