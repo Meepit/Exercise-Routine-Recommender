@@ -14,10 +14,16 @@ angular.module('routine').
             $resourceProvider.defaults.stripTrailingSlashes = false;
             $routeProvider.
                 when("/", {
-                    template: "Home page"// Create home template
+                    template: "Home"// Create home template
                 }).
                 when("/login", {
                     template: "Login page"// create login template
+                }).
+                when("/routines", {
+                    template: "<routine-list></routine-list>"
+                }).
+                when("/routines/:id", {
+                    template: "<routine-detail></routine-detail>"
                 }).
                 otherwise({
                     template: "Page not found"

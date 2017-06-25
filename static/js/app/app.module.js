@@ -8,5 +8,7 @@ angular.module('routine', [
     'ui.bootstrap',
     // internal
     'navBar',
+    'routineList',
+    'routineDetail',
     //'login',
 ]);
