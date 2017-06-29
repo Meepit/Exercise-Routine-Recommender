@@ -6,9 +6,12 @@ angular.module('routine', [
     'ngRoute',
     'ngResource',
     'ui.bootstrap',
+    'chart.js',
     // internal
     'navBar',
     'routineList',
     'routineDetail',
-    //'login',
+    'login',
+    'progressView',
 ]);
+

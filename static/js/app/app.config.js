@@ -17,13 +17,16 @@ angular.module('routine').
                     template: "Home"// Create home template
                 }).
                 when("/login", {
-                    template: "Login page"// create login template
+                    template: "<login></login>"// create login template
                 }).
                 when("/routines", {
                     template: "<routine-list></routine-list>"
                 }).
                 when("/routines/:id", {
                     template: "<routine-detail></routine-detail>"
+                }).
+                when("/progress",{
+                    template: "<progress-view></progress-view>"
                 }).
                 otherwise({
                     template: "Page not found"

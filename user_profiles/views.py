@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from user_profiles.models import Profile
+from progress.models import Progress
 from user_profiles.permissions import IsOwnerOrAdmin
 from user_profiles.serializers import ProfileSerializer, UserSerializer
 from rest_framework import generics, renderers, permissions
-
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -27,9 +28,12 @@ class UserCreate(generics.CreateAPIView):
 
 
 class UserDetail(generics.RetrieveUpdateAPIView):
+    """
+    Performs lookup using User.username. Need to be able to lookup by username
+    for token based authentication.
+    """
+    lookup_field = ('user__username')
     #permission_classes = (IsOwnerOrAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
-

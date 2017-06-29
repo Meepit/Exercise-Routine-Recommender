@@ -14,11 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-href="/my-account">My account</a></li>
+        <li><a ng-href="/my-account" ng-show='loggedIn'>My account</a></li>
         <li><a ng-href="/routines">Routines</a></li>
-        <li><a ng-href="/progress">Progress</a></li>
-        <li><a ng-href="/login/" ng-hide='userLoggedIn'>Login</a></li>
-        <li><a ng-href="/logout" ng-show='userLoggedIn'>Logout</a></li>
+        <li><a ng-href="/progress" ng-show='loggedIn'>Progress</a></li>
+        <li><a ng-href="/login" ng-hide='loggedIn'>Login</a></li>
+        <li><a ng-href="/login" ng-show='loggedIn'>Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

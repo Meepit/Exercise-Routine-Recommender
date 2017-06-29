@@ -30,6 +30,26 @@ angular.module('data').
                 });
 });
 
+// Have the factory take a function as a parameter so that we can pass token to it
+// Allowing authentication of request
+angular.module('data').
+    factory('UserData', ['$resource', function($resource){
+        return {
+            userData: function(token){
+                return $resource('/api/users/:username/progress/', {}, {
+                    get: {
+                        method: "GET",
+                        params: {"username": "@username"},
+                        isArray: true,
+                        headers: {
+                            'Authorization': 'JWT ' +  token
+                        }
+                    }
+                })
+            }
+        }
+    }])
+
 
 //    factory("Data", function($resource) {
 //        var url = '/api/routines/'

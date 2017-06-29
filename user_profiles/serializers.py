@@ -1,6 +1,7 @@
 from user_profiles.models import Profile
 from rest_framework import serializers
 from progress.serializers import ProgressSerializer
+from progress.models import Progress
 from recommender.serializers import RoutineSerializer
 from django.contrib.auth.models import User
 
@@ -22,11 +23,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):#serializers.ModelS
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+    lookup_field = 'user__username'
     user = UserSerializer(many=False, read_only=True)
-    routine = serializers.HyperlinkedRelatedField(view_name='routine-detail', format='html', read_only=True)
-    get_progress = serializers.HyperlinkedIdentityField(many=True, view_name='progress-detail', format='html')
+    routine = RoutineSerializer(many=False)
+    #routine = serializers.HyperlinkedRelatedField(view_name='routine-detail', format='html', read_only=True)
+    #get_progress = serializers.HyperlinkedIdentityField(many=True, view_name='progress-detail', format='html')
+    get_progress = ProgressSerializer(many=True, read_only=True)
 
     class Meta:
         model = Profile
         fields = ('id', 'user', 'routine', 'get_progress')
-

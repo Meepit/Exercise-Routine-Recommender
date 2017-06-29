@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -124,7 +124,8 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_jwt.authentication.JSONWebTokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication',
-                                       'rest_framework.authentication.BasicAuthentication',)
+                                       'rest_framework.authentication.BasicAuthentication',),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=604800)  # 1 week
 }
 
 
