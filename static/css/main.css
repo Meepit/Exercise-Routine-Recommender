@@ -1,6 +1,32 @@
+html {
+	overflow-y: scroll;
+	background-color: #333;
+}
+
+body {
+    background-color: #333;
+}
+
 #box:hover{
 background: #C8C8C8;
 }
 #nounderline{
 text-decoration: none
+}
+
+.jumbotron, .well, .caption, .list-group-item {
+    background-color: #333;
+}
+
+
+p, h2, h3, th{
+    color: white;
+}
+
+.suggestion {
+    color: black;
+}
+
+h1{
+    color: white!important
 }

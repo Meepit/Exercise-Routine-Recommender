@@ -111,16 +111,16 @@ class Routine(models.Model):
 
         # Shape DataFrame
         routine_df = pd.DataFrame({
-          'name': pd.Series([i.name for i in routines]),
+          'id': pd.Series([i.pk for i in routines]),
           'type': pd.Series(i.routine_type for i in routines),
           'equipment needed': pd.Series(i.equipment_needed for i in routines),
           'days per week': pd.Series(i.days_per_week for i in routines),
           'session length': pd.Series(i.session_length for i in routines),
         })
         # Create classifier
-        routine_df = routine_df[["name", "type", "equipment needed", "days per week", "session length"]]
+        routine_df = routine_df[["id", "type", "equipment needed", "days per week", "session length"]]
         features = routine_df.columns[1:]
-        target = routine_df["name"]
+        target = routine_df["id"]
         routine_classifier = tree.DecisionTreeClassifier()
         if classifier_type.lower() == "forest":
             routine_classifier = RandomForestClassifier(n_estimators=10)

@@ -61,10 +61,13 @@ class MakeClassification(views.APIView):
         else:
             clf_name = Routine.generate_classifier(prioritize=(post_dict["priority_field"], post_dict[post_dict["priority_field"]]))
             classifier = joblib.load('recommender/classifiers/'+clf_name)
-            suggested_routine = classifier.predict([[post_dict["routine_type"],
+            suggested_routine_id = classifier.predict([[post_dict["routine_type"],
                                                      post_dict["equipment_needed"],
                                                      post_dict["days_per_week"],
                                                      post_dict["session_length"]]])
-            return Response({"Routine": suggested_routine})
+            routine = Routine.objects.get(pk=suggested_routine_id)
+            return Response({"Routine_ID": suggested_routine_id,
+                             "Routine_Name": routine.name,
+                             })
 
 

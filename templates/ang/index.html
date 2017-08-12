@@ -9,13 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RoutineFinder</title>
 
-    <!-- Bootstrap and jquery-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+
+    <!--  minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- bootstrap -->
 
 
-    <!-- External libraries -->
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js'></script>
+    <!-- Externals -->
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js'></script>
@@ -24,7 +32,7 @@
     <script src='{% static "js/app/external/angular-chart.min.js" %}' ></script>
 
 
-   <!-- Internal libraries -->
+   <!-- Internals -->
     <script src='{% static "js/app/app.module.js" %}' ></script>
     <script src='{% static "js/app/app.config.js" %}' ></script>
 
@@ -48,11 +56,21 @@
     <script src='{% static "js/app/progress/progress.module.js" %}' ></script>
     <script src='{% static "js/app/progress/progress.component.js" %}' ></script>
 
+    <script src='{% static "js/app/recommend/recommend.module.js" %}' ></script>
+    <script src='{% static "js/app/recommend/recommend.component.js" %}' ></script>
+
+    <script src='{% static "js/app/account-view/account-view.module.js" %}' ></script>
+    <script src='{% static "js/app/account-view/account-view.component.js" %}' ></script>
+
+    <script src='{% static "js/app/registration/registration.module.js" %}' ></script>
+    <script src='{% static "js/app/registration/registration.component.js" %}' ></script>
+
+
+
   </head>
   <body>
     <div class='container'>
         <nav-bar> </nav-bar>
-
         <div class='col-sm-12' ng-view>
 
         </div>

@@ -1,6 +1,5 @@
 <div class="jumbotron">
-   <h1>Progress</h1>
-   <p>...</p>
+   <h1><center>Progress</center></h1>
    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
 </div>
 
@@ -8,76 +7,56 @@
     <strong>{{errors}}</strong>
 </div>
 
-<div ng-controller="MyController" class="col-md-6">
-<canvas id="line" class="chart chart-line" chart-data="data"
-chart-labels="labels" chart-series="series" chart-options="options"
-chart-dataset-override="datasetOverride" chart-click="onClick">
-</canvas>
+<div ng-controller="MyController" ng-if="!errors">
+    <!-- Graph filter -->
+    <div class="col-md-6 well">
+        <label for="exlist"> <p>Visualise progress for:</p> </label>
+        <select ng-model="selectedExercise"
+            ng-options="exercise[1] for exercise in exercises" class="form-control" id="exlist">
+            <option value="exercise[0]">Select</option>
+        </select>
+
+        <canvas id="line" class="chart chart-line" chart-data="data"
+            chart-labels="labels" chart-series="series" chart-options="options"
+            chart-dataset-override="datasetOverride" chart-click="onClick">
+        </canvas>
+
+    </div>
+
+    <!-- Progress POST form -->
+        <!-- Exercise list -->
+    <div class="col-md-6 well">
+        <form name="myForm" ng-submit="postProgress()">
+            <label for="exlist"><p>Add progress: </p> </label>
+            <select ng-model="postExercise"
+            ng-options="exercise[1] for exercise in allExercises" class="form-control" id="exlist">
+            <option value="exercise[0]">Select</option>
+            </select>
+        <!-- Quantity text field -->
+        <label><p>Quantity:</p>
+            <input type="text" name="input" ng-model="postQuantity"
+            ng-pattern="example.word" required ng-trim="false" class="form-control">
+        </label>
+            <br>
+        <!-- Date field -->
+        <label for="test2"><p>Date:</p></label>
+            <input type="date" id="exampleInput" name="input" ng-model="postDate"
+            placeholder="yyyy-MM-dd" class="form-control" id="test2" required />
+        <!-- Submit -->
+        <input type="submit" class="btn btn-default" value="Submit" />
+        </form>
+
+    <div class="alert alert-danger" ng-if="postErrMsg">
+        <strong>Error: Please make sure the date and quantity are valid.</strong>
+    </div>
+    <div class="alert alert-success" ng-if="postSuccMsg">
+        <strong>Added</strong>
+    </div>
+ </div>
+<br>
+
+<span class="col-md-4">
+
+</span>
+
 </div>
-
-<!--
- <div class="col-md-6">
-<canvas id="myChart" width="400" height="300"></canvas>
-<script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "test", "test", "test", "test", "test"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3, 45, 11, 31, 33, 36],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-</script>
-     </div>
-
- <div class="col-md-6">
-     <p>
-         What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-         It has survived not only five centuries, but also the leap into electronic typesetting,
-         remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-         Aldus PageMaker including versions of Lorem Ipsum.
-
-                  What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-         It has survived not only five centuries, but also the leap into electronic typesetting,
-         remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-         Aldus PageMaker including versions of Lorem Ipsum.
-     </p>
-     </div>
--->

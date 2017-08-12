@@ -2,7 +2,7 @@
 
 angular.module('routineList').component('routineList', {
     templateUrl: '/api/templates/routines.html',
-    controller: function(RoutineData, WorkoutData, $cookies, $location, $routeParams, $rootScope, $scope, $http){
+    controller: function(RoutineData, WorkoutData, $scope){
         $scope.routines = RoutineData.get()
     }
   }

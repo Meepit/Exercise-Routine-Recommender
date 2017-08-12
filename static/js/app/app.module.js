@@ -13,5 +13,8 @@ angular.module('routine', [
     'routineDetail',
     'login',
     'progressView',
+    'recommend',
+    'accountView',
+    'registrationView',
 ]);
 

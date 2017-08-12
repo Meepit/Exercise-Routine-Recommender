@@ -1,22 +1,5 @@
-<!--
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Routine name</h3>
-        <p>Workout 1</p>
-        <p> Workout 2</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
--->
-
 <div class="jumbotron">
-   <h1>Routines</h1>
-   <p>...</p>
-   <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
+   <h1><center>Routines</center></h1>
 </div>
 
 <div ng-repeat="routine in routines">
@@ -28,7 +11,7 @@
                 <p>Estimated session length: {{routine.session_length}} minutes</p>
                 <p ng-if="routine.routine_type == 0">Routine type: Strength</p>
                 <p ng-if="routine.routine_type == 1">Routine type: Hypertrophy</p>
-                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button">More info</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button">More info</a> <a href="#" class="btn btn-default" role="button">Make primary routine</a></p>
             </div>
         </div>
        </a>

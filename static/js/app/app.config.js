@@ -28,7 +28,16 @@ angular.module('routine').
                 when("/progress",{
                     template: "<progress-view></progress-view>"
                 }).
+                when("/recommend",{
+                    template: "<recommend><recommend>"
+                }).
+                when("/my-account",{
+                    template: "<account-view><account-view>"
+                }).
+                when("/register",{
+                    template: "<registration-view><registration-view>"
+                }).
                 otherwise({
-                    template: "Page not found"
+                    template: "<p>Page not found</p>"
                 })
          });

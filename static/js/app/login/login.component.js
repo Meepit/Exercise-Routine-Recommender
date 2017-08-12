@@ -31,7 +31,6 @@ angular.module('login').component('login', {
             }
             var makeRequest = $http(request)
             makeRequest.success(function(data, status, headers, config){
-                console.log("Success: ", data.token)
                 $cookies.put("token", data.token)
                 $cookies.put("username", user.username)
                 $location.path("/")

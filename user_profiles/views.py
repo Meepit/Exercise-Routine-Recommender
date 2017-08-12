@@ -12,6 +12,8 @@ from django.views.generic.detail import DetailView
 
 
 class UserCreate(generics.CreateAPIView):
+    authentication_classes = ()
+    permission_classes = ()
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -33,7 +35,7 @@ class UserDetail(generics.RetrieveUpdateAPIView):
     for token based authentication.
     """
     lookup_field = ('user__username')
-    #permission_classes = (IsOwnerOrAdmin,)
+    permission_classes = (IsOwnerOrAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

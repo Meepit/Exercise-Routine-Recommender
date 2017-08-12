@@ -6,9 +6,20 @@ from recommender.serializers import ExerciseSerializer
 
 
 class ProgressSerializer(serializers.HyperlinkedModelSerializer):
-    # Exercise = ExerciseSerializer(many=True, read_only=True)
+    """
+    exercise_id and exercise_name added as separate fields so that not as many GET requests
+    needed in angular when generating visualisations.
+
+    No need to add exercise_id and exercise_name to POST, they're generated from the exercise
+    """
+    #exercise = serializers.HyperlinkedIdentityField(many=False, view_name='exercise-detail', format='html', read_only=False)
+    #exercise = ExerciseSerializer(many=False)
+    exercise_id = serializers.PrimaryKeyRelatedField(queryset=Exercise.objects.all(),source='exercise.id', required=False, allow_null=True)
+    exercise_name = serializers.PrimaryKeyRelatedField(queryset=Exercise.objects.all(),source='exercise.name', required=False, allow_null=True)
+    #queryset=Exercise.objects.all(),
+
     class Meta:
         model = Progress
-        fields = ('id', 'date', 'quantity', 'exercise', 'user')
+        fields = ('id', 'date', 'quantity', 'exercise', 'exercise_id', 'exercise_name', 'user')
 
 

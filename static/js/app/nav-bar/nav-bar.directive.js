@@ -3,7 +3,8 @@
 angular.module('navBar').
     directive('navBar', function($cookies, $location){
         return {
-            templateUrl: "api/templates/navbar.html",
+            restrict: "E",
+            templateUrl: "/api/templates/navbar.html",
             link: function(scope, element, attr){
                 // loggedIn tracks whether loggedIn cookie is available or not
                 // if available, login button becomes logout in navbar html
