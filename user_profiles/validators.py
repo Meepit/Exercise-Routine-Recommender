@@ -7,7 +7,7 @@ class MinLengthValidator(object):
 
     def __call__(self, value):
         if len(value) < self.min_size:
-            raise serializers.ValidationError('Value too short')
+            raise serializers.ValidationError('Value too short, min length is {0}'.format(self.min_size))
 
 
 class SpecialCharValidator(object):

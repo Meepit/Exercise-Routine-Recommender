@@ -7,8 +7,10 @@ angular.module('routine', [
     'ngResource',
     'ui.bootstrap',
     'chart.js',
+    'ngMessages',
     // internal
     'navBar',
+    'passwordCheck',
     'routineList',
     'routineDetail',
     'login',

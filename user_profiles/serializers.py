@@ -19,11 +19,11 @@ class UserSerializer(serializers.Serializer):  # serializers.ModelSerializer):
     #             'write_only': True},
     #     }
     username = serializers.CharField(max_length=100, required=True, validators=[
-        UniqueValidator(queryset=User.objects.all()), SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}'])])
+        UniqueValidator(queryset=User.objects.all()), SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}', '(', ')'])])
     password = serializers.CharField(max_length=100, required=True, validators=[MinLengthValidator(9),
-        SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}'])])
+        SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}', '(', ')'])])
     email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all()),
-        SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}'])])
+        SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}', '(', ')'])])
 
     extra_kwargs = {
         'password': {

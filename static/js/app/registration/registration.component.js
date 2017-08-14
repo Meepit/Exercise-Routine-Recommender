@@ -7,17 +7,19 @@ angular.module('registrationView').component('registrationView', {
             firstName: "",
             username: "",
             password: "",
-            passwordCheck: "",
+            passwordVerify: "",
             email: "",
         }
 
-      //  $scope.errors =
-      //  var clientsideValidation = function(){
-
- //       }
+      $scope.charRestrict = {
+        regExp: /[{}\[\]|\\/'()";:<>]+/i,
+        test: function(val) {
+             return !this.regExp.test(val);
+      }
+    };
 
         $scope.registerUser = function(){
-            // clientside validation maybe do this with $scope.$watch on userData keys
+
         }
 
     }
