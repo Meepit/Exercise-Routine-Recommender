@@ -34,8 +34,10 @@ class UserDetail(generics.RetrieveUpdateAPIView):
     Performs lookup using User.username. Need to be able to lookup by username
     for token based authentication.
     """
+    #authentication_classes = ()
+    #permission_classes = ()
     lookup_field = ('user__username')
-    permission_classes = (IsOwnerOrAdmin,)
+    #permission_classes = (IsOwnerOrAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

@@ -39,6 +39,6 @@ angular.module('login').component('login', {
                 $scope.loginError = data.non_field_errors.join("<br>")
                 console.log("Error ", data)
             })
-        }
+    }
     }
 })

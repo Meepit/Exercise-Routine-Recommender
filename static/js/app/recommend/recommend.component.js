@@ -48,5 +48,21 @@ angular.module('recommend').component('recommend', {
                 })
            }
 
+           $scope.saveRoutine = function(){
+                if($cookies.get("token")){
+                    //logged in.
+                    var token = $cookies.get("token")
+                    $http.put('/api/users/' + $cookies.get("username") + "/", {
+                        "routine_id": $scope.chosenRoutineID
+                    }, {headers: {"Authorization": "JWT " + token}}).then(function(response){
+                        console.log("Set routine")
+                    })
+                } else {
+                    // Save routine in cookie to be added if user registers
+                    $cookies.put("savedRoutine", $scope.chosenRoutineID)
+                    console.log("Cookie created")
+                }
+           }
+
     }
 })
