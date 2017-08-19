@@ -47,3 +47,7 @@ h1{
     border-color: green;
     outline-color: green;
 }
+
+.rightFloat{
+    float: right;
+}

@@ -1,3 +1,4 @@
+from django.contrib.auth.password_validation import validate_password
 from user_profiles.models import Profile
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
@@ -73,3 +74,15 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         instance.save()
         return instance
 
+
+class UpdatePasswordSerializer(serializers.Serializer):
+    """
+    Change password serializer
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(max_length=100, required=True, validators=[MinLengthValidator(9),
+        SpecialCharValidator(['"', '\'', '<', '>', ':', ';', '{', '}', '(', ')'])])
+
+    def validate_new_password(self, value):
+        validate_password(value)
+        return value

@@ -2,6 +2,10 @@
    <h1><center>Routines</center></h1>
 </div>
 
+<div ng-if="success" class="alert alert-success">
+    <strong>Routine changed</strong>
+</div>
+
 <div ng-repeat="routine in routines">
     <div class="col-sm-6 col-md-4">
        <a href="/routines/{{routine.id}}" id="nounderline"><div class="thumbnail" id="box">
@@ -11,7 +15,8 @@
                 <p>Estimated session length: {{routine.session_length}} minutes</p>
                 <p ng-if="routine.routine_type == 0">Routine type: Strength</p>
                 <p ng-if="routine.routine_type == 1">Routine type: Hypertrophy</p>
-                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button">More info</a> <a href="#" class="btn btn-default" role="button">Make primary routine</a></p>
+                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button">More info</a>
+                    <a href="#" ng-if="loggedIn" ng-click="changeRoutine(routine.id)" class="btn btn-default" role="button">Make primary routine</a></p>
             </div>
         </div>
        </a>

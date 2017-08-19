@@ -7,6 +7,7 @@ urlpatterns = format_suffix_patterns([
         url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='user-detail'),
         url(r'^users/(?P<user__username>[\w.@+-]+)/$', views.UserDetail.as_view(), name='username-detail'),
         url(r'^users/(?P<user__username>[\w.@+-]+)/progress/$', ProgressList.as_view(), name='username-progress'),
+        url(r'^users/(?P<user__username>[\w.@+-]+)/changepassword/$', views.ChangePassword.as_view(), name='change-password'),
         url(r'users/$', views.UserCreate.as_view(), name='user-create'),
 ])
 

@@ -3,6 +3,31 @@
 angular.module('accountView').component('accountView',{
     templateUrl: 'api/templates/accountview.html',
     controller: function($cookies, $scope, $location, $http, $routeParams){
+
+            $scope.updatePassword = function(){
+                var username = $cookies.get('username');
+                $http({
+                    method: 'PUT',
+                    url: '/api/users/' + username + '/' + 'changepassword' + '/',
+                    data: {
+                        "old_password": $scope.passwordChange.oldPassword,
+                        "new_password": $scope.passwordChange.newPassword
+                    },
+                    headers: {'Authorization': 'JWT ' + $cookies.get('token')}
+                }).then(function(response){
+                    $scope.success = true;
+                }, function(response){
+                    $scope.errors = "";
+                    console.log(response)
+                    var data = response.data
+                    $scope.passwordChangeErrors = []
+                    for(var i=0; i<Object.keys(data).length; i++){
+                        var key = Object.keys(data)[i]
+                        $scope.passwordChangeErrors.push(key + ": " + data[key][0])
+                }
+                })
+            }
+
             var loggedIn = $cookies.get("token")
             if(loggedIn == null){
                 $scope.errors = "Please login to view this page"
@@ -14,10 +39,18 @@ angular.module('accountView').component('accountView',{
                     url: '/api/users/' + $scope.username + '/',
                     headers: {"Authorization": "JWT " + $cookies.get("token")}
                 }).then(function(response){
-                    console.log(response)
+                    $scope.data = response.data.user
+                    $scope.firstName = response.data.user.first_name
+                    $scope.routineName = response.data.routine.name
+                    $scope.email = response.data.user.email
                 }, function(response){
                     console.log(response)
                 })
+                $scope.passwordChange = {
+                    "oldPassword": "",
+                    "newPassword": "",
+                }
+
             }
         }
     })

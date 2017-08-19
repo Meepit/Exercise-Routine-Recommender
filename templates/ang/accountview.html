@@ -6,3 +6,36 @@
 <div ng-if="errors" class="alert alert-danger">
     <strong>{{errors}}</strong>
 </div>
+
+<div ng-if="!errors">
+<div class="col-md-4 col-md-offset-2">
+    <h3>Account info:</h3>
+    <ul class="list-group">
+        <li class="list-group-item"><p>Name: <span class="rightFloat">{{firstName}}</span></p></li>
+        <li class="list-group-item"><p>Username: <span class="rightFloat">{{username}}</span></p></li>
+        <li class="list-group-item"><p>email: <span class="rightFloat">{{email}}</span></p></li>
+        <li class="list-group-item"><p>Current routine: <span class="rightFloat">{{routineName}}</span></p></li>
+    </ul>
+</div>
+
+<div class="col-md-4 col-md-offset-1">
+    <div ng-if="success" class="alert alert-success">
+        <strong>Password changed</strong>
+    </div>
+
+    <div ng-if="passwordChangeErrors" class="alert alert-danger">
+        <div ng-repeat="error in passwordChangeErrors">
+            <strong>{{error}}</strong>
+        </div>
+    </div>
+
+    <h3>Change password</h3>
+    <form ng-submit="updatePassword()">
+        <label><p>Old password: </p></label>
+        <input type="password" ng-model="passwordChange.oldPassword" class="form-control" placeholder="Enter password">
+        <label><p>New password: </p></label>
+        <input type="password" ng-model="passwordChange.newPassword" class="form-control" placeholder="Enter password">
+        <input type='submit' value='Submit' class="btn btn-primary" />
+    </form>
+</div>
+</div>
