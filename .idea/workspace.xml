@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0db30dc-2846-49cd-b3da-ef7d9444cf84" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routineapp/settings.py" afterPath="$PROJECT_DIR$/routineapp/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/main.css" afterPath="$PROJECT_DIR$/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/account-view/account-view.component.js" afterPath="$PROJECT_DIR$/static/js/app/account-view/account-view.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/routine-list/routine-list.component.js" afterPath="$PROJECT_DIR$/static/js/app/routine-list/routine-list.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ang/accountview.html" afterPath="$PROJECT_DIR$/templates/ang/accountview.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/ang/routines.html" afterPath="$PROJECT_DIR$/templates/ang/routines.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tree.dot" afterPath="$PROJECT_DIR$/tree.dot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_profiles/serializers.py" afterPath="$PROJECT_DIR$/user_profiles/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_profiles/urls.py" afterPath="$PROJECT_DIR$/user_profiles/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_profiles/views.py" afterPath="$PROJECT_DIR$/user_profiles/views.py" />
     </list>
     <ignored path="routineapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routines.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/ang/routines.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
@@ -68,6 +57,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routineapp/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -131,7 +130,6 @@
         <option value="$PROJECT_DIR$/static/js/app/registration/registration.component.js" />
         <option value="$PROJECT_DIR$/static/js/app/recommend/recommend.component.js" />
         <option value="$PROJECT_DIR$/static/css/main.css" />
-        <option value="$PROJECT_DIR$/routineapp/settings.py" />
         <option value="$PROJECT_DIR$/user_profiles/urls.py" />
         <option value="$PROJECT_DIR$/user_profiles/serializers.py" />
         <option value="$PROJECT_DIR$/user_profiles/views.py" />
@@ -139,6 +137,7 @@
         <option value="$PROJECT_DIR$/templates/ang/accountview.html" />
         <option value="$PROJECT_DIR$/static/js/app/routine-list/routine-list.component.js" />
         <option value="$PROJECT_DIR$/templates/ang/routines.html" />
+        <option value="$PROJECT_DIR$/routineapp/settings.py" />
       </list>
     </option>
   </component>
@@ -327,6 +326,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routineapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routineapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routineapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -498,7 +511,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13375" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -838,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routineapp/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_profiles/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -950,6 +955,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routineapp/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
           <folding />
         </state>
       </provider>
