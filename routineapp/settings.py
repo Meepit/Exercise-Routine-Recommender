@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'progress',
     'user_profiles',
     'rest_framework',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
