@@ -39,6 +39,9 @@
 
    <link rel="stylesheet" href='{% static "css/main.css" %}'>
 
+    <script src='{% static "js/app/home/home.module.js" %}' ></script>
+    <script src='{% static "js/app/home/home.component.js" %}'></script>
+
     <script src='{% static "js/app/data/data.module.js" %}' ></script>
     <script src='{% static "js/app/data/data.service.js" %}' ></script>
 
@@ -75,7 +78,7 @@
   <body>
     <div class='container'>
         <nav-bar> </nav-bar>
-        <div class='col-sm-12' ng-view>
+        <div ng-view>
 
         </div>
 

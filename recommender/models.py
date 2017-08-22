@@ -11,7 +11,7 @@ from recommender.choices import *
 '''
 Tables: Workout, Routine, Exercise
 '''
-
+CLASSIFIERS_PATH = os.path.join('/home', 'M33PIT', 'Exercise-app', 'Exercise-Routine-Recommender', 'recommender', 'classifiers/')
 
 class Exercise(models.Model):
     """
@@ -92,7 +92,7 @@ class Routine(models.Model):
 
         filename = classifier_type + "_" + prioritize[0].lower() + '_' + (str(prioritize[1]) if prioritize[0]
                                   not in ["days_per_week", "session_length"] else 'lte_' + str(prioritize[1])) + '.pkl'
-        existing_classifiers = [file for file in os.listdir("recommender/classifiers")]
+        existing_classifiers = [file for file in os.listdir(CLASSIFIERS_PATH)]
         if filename in existing_classifiers:
             # Exit function, tree exists
             print("{0} already exists.".format(filename))
@@ -127,7 +127,7 @@ class Routine(models.Model):
         routine_classifier.fit(routine_df[features], target)
 
         # Save classifier, use named identifier
-        joblib.dump(routine_classifier, 'recommender/classifiers/' + filename)
+        joblib.dump(routine_classifier, CLASSIFIERS_PATH + filename)
         print("Created new {0} classifier named {1}".format(classifier_type, filename))
         if classifier_type.lower() == "tree":
             tree.export_graphviz(routine_classifier)
@@ -138,7 +138,7 @@ class Routine(models.Model):
         """
         Delete all existing classifiers
         """
-        for file in os.scandir("recommender/classifiers"):
+        for file in os.scandir(CLASSIFIERS_PATH):
             if file.name.endswith(".pkl"):
                 os.unlink(file.path)
         super(Routine, self).save(*args, **kwargs)
@@ -148,6 +148,6 @@ class Routine(models.Model):
 # @receiver is a subscriber that is called before a Routine entry is deleted
 # Overriding .save() only works when a single entry is deleted and not on bulk deletes.
 def delete_existing_classifiers(sender, **kwargs):
-    for file in os.scandir("recommender/classifiers"):
+    for file in os.scandir(CLASSIFIERS_PATH):
         if file.name.endswith(".pkl"):
             os.unlink(file.path)

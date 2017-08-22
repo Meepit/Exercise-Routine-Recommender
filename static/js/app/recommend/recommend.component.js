@@ -20,7 +20,7 @@ angular.module('recommend').component('recommend', {
                 ["session_length", "Session Length"],
             ]
 
-           $scope.daysPerWeek = [3,4,5]
+           $scope.daysPerWeek = [3,4,5,6]
            $scope.sessionLength = 60
 
            $scope.routineData = {
@@ -61,6 +61,7 @@ angular.module('recommend').component('recommend', {
                     // Save routine in cookie to be added if user registers
                     $cookies.put("savedRoutine", $scope.chosenRoutineID)
                     console.log("Cookie created")
+                    $location.path("/register")
                 }
            }
 

@@ -11,11 +11,11 @@
        <a href="/routines/{{routine.id}}" id="nounderline"><div class="thumbnail" id="box">
             <div class="caption">
                 <h3>{{routine.name}}</h3>
-                <p>Days per week: {{routine.days_per_week}}</p>
-                <p>Estimated session length: {{routine.session_length}} minutes</p>
-                <p ng-if="routine.routine_type == 0">Routine type: Strength</p>
-                <p ng-if="routine.routine_type == 1">Routine type: Hypertrophy</p>
-                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button">More info</a>
+                <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Days per week: {{routine.days_per_week}}</p>
+                <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Estimated session length: {{routine.session_length}} minutes</p>
+                <p ng-if="routine.routine_type == 0"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span> Routine type: Strength</p>
+                <p ng-if="routine.routine_type == 1"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span> Routine type: Hypertrophy</p>
+                <p><a href="/routines/{{routine.id}}" class="btn btn-primary" role="button"> More info</a>
                     <a href="#" ng-if="loggedIn" ng-click="changeRoutine(routine.id)" class="btn btn-default" role="button">Make primary routine</a></p>
             </div>
         </div>

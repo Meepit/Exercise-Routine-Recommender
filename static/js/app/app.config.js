@@ -14,7 +14,7 @@ angular.module('routine').
             $resourceProvider.defaults.stripTrailingSlashes = false;
             $routeProvider.
                 when("/", {
-                    template: "Home"// Create home template
+                    template: "<home-view></home-view>"// Create home template
                 }).
                 when("/login", {
                     template: "<login></login>"// create login template

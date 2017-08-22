@@ -1,5 +1,6 @@
 from recommender.models import Routine, Exercise, Workout
 from recommender.serializers import ExerciseSerializer, WorkoutSerializer, RoutineSerializer
+from recommender.models import CLASSIFIERS_PATH
 from rest_framework import generics, renderers, views
 from rest_framework import permissions
 from rest_framework.decorators import api_view
@@ -60,7 +61,7 @@ class MakeClassification(views.APIView):
             return Response({"Routine": "There was a problem getting a routine."})
         else:
             clf_name = Routine.generate_classifier(prioritize=(post_dict["priority_field"], post_dict[post_dict["priority_field"]]))
-            classifier = joblib.load('recommender/classifiers/'+clf_name)
+            classifier = joblib.load(CLASSIFIERS_PATH+clf_name)
             suggested_routine_id = classifier.predict([[post_dict["routine_type"],
                                                      post_dict["equipment_needed"],
                                                      post_dict["days_per_week"],

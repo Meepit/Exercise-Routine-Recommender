@@ -18,5 +18,6 @@ angular.module('routine', [
     'recommend',
     'accountView',
     'registrationView',
+    'homeView',
 ]);
 
