@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^api/', include('progress.urls')),
     url(r'^api/', include('user_profiles.urls')),
     url(r'auth/token/$', obtain_jwt_token),  # Creates token on post for token based authentication
-    url(r'^api/templates/(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AngularTemplateView.as_view()), # Load individual templates
+    url(r'^api/templates/(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AngularTemplateView.as_view()),
 
 ]
 

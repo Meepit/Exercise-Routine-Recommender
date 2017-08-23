@@ -1,61 +1,74 @@
 <div class="jumbotron">
-   <h1><center>Progress</center></h1>
+   <h1>
+      <center>Progress</center>
+   </h1>
    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
 </div>
-
 <div ng-if="errors" class="alert alert-danger">
-    <strong>{{errors}}</strong>
+   <strong>{{errors}}</strong>
 </div>
-
-<div ng-controller="MyController" ng-if="!errors">
-    <!-- Graph filter -->
-    <div class="col-md-6 well">
-        <label for="exlist"> <p>Visualise progress for:</p> </label>
-        <select ng-model="selectedExercise"
-            ng-options="exercise[1] for exercise in exercises" class="form-control" id="exlist">
-            <option value="exercise[0]">Select</option>
-        </select>
-
-        <canvas id="line" class="chart chart-line" chart-data="data"
-            chart-labels="labels" chart-series="series" chart-options="options"
-            chart-dataset-override="datasetOverride" chart-click="onClick">
-        </canvas>
-
-    </div>
-
-    <!-- Progress POST form -->
-        <!-- Exercise list -->
-    <div class="col-md-6 well">
-        <form name="myForm" ng-submit="postProgress()">
-            <label for="exlist"><p>Add progress: </p> </label>
-            <select ng-model="postExercise"
+<div ng-controller="progressController" ng-if="!errors">
+   <!-- Graph filter -->
+   <div class="col-md-8 ">
+      <label for="exlist">
+         <p>Visualise progress for:</p>
+      </label>
+      <select ng-model="selectedExercise"
+         ng-options="exercise[1] for exercise in exercises" class="form-control" id="exlist">
+         <option value="exercise[0]">Select</option>
+      </select>
+      <canvas id="line" class="chart chart-line" chart-data="data"
+         chart-labels="labels" chart-series="series" chart-options="options"
+         chart-dataset-override="datasetOverride" chart-click="onClick">
+      </canvas>
+   </div>
+   <!-- Progress POST form -->
+   <!-- Exercise list -->
+   <div class="col-md-4">
+      <div class="alert alert-danger" ng-if="postErrMsg">
+         <strong>Error: Please make sure the date and quantity are valid.</strong>
+      </div>
+      <div class="alert alert-success" ng-if="postSuccMsg">
+         <strong>Added</strong>
+      </div>
+      <form name="myForm" ng-submit="postProgress()">
+         <label for="exlist">
+            <p>Add progress: </p>
+         </label>
+         <select ng-model="postExercise"
             ng-options="exercise[1] for exercise in allExercises" class="form-control" id="exlist">
             <option value="exercise[0]">Select</option>
-            </select>
-        <!-- Quantity text field -->
-        <label><p>Quantity:</p></label>
-            <input type="text" name="input" ng-model="postQuantity"
+         </select>
+         <!-- Quantity text field -->
+         <label>
+            <p>Quantity:</p>
+         </label>
+         <input type="text" name="input" ng-model="postQuantity"
             ng-pattern="example.word" required ng-trim="false" class="form-control">
-            <br>
-        <!-- Date field -->
-        <label for="test2"><p>Date:</p></label>
-            <input type="date" id="exampleInput" name="input" ng-model="postDate"
+         <br>
+         <!-- Date field -->
+         <label for="test2">
+            <p>Date:</p>
+         </label>
+         <input type="date" id="exampleInput" name="input" ng-model="postDate"
             placeholder="yyyy-MM-dd" class="form-control" id="test2" required />
-        <!-- Submit -->
-        <input type="submit" class="btn btn-primary" value="Submit" />
-        </form>
-
-    <div class="alert alert-danger" ng-if="postErrMsg">
-        <strong>Error: Please make sure the date and quantity are valid.</strong>
-    </div>
-    <div class="alert alert-success" ng-if="postSuccMsg">
-        <strong>Added</strong>
-    </div>
- </div>
-<br>
-
-<span class="col-md-4">
-
-</span>
-
+         <!-- Submit -->
+         <input type="submit" class="btn btn-primary" value="Submit" />
+      </form>
+   </div>
+   <!-- Delete progress -->
+   <div class="deleteProgress col-md-4">
+      <h3>Delete past progress</h3>
+      <div class="alert alert-danger" ng-if="deleteErrMsg">
+         <strong>Something went wrong</strong>
+      </div>
+      <div class="alert alert-success" ng-if="deleteSuccMsg">
+         <strong>Successfully deleted</strong>
+      </div>
+      <select multiple ng-model="selectedProgress"
+         ng-options="progress[1] for progress in progressList" class="form-control" id="exlist">
+         <option value="exercise[0]">Select</option>
+      </select>
+      <button type="button" class="btn" ng-click="deleteProgress()">Delete</button>
+   </div>
 </div>

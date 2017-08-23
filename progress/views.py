@@ -31,6 +31,6 @@ class ProgressList(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
-class ProgressDetail(generics.RetrieveAPIView):
+class ProgressDetail(generics.RetrieveDestroyAPIView):
     queryset = Progress.objects.all()
     serializer_class = ProgressSerializer

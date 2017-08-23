@@ -25,7 +25,7 @@ SECRET_KEY = 'pu&ic(t3_-p_-^i^e18fte92-)jbqa=4917lreq##j5uafk_nx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['m33pit.pythonanywhere.com']
+ALLOWED_HOSTS = ['m33pit.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -124,7 +124,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_jwt.authentication.JSONWebTokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication',
                                        'rest_framework.authentication.BasicAuthentication',),
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=604800)  # 1 week
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300)  # 1 week
 }
 
 

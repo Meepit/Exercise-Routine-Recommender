@@ -2,9 +2,9 @@
 
 angular.module('progressView').component('progressView', {
         templateUrl: 'api/templates/progress.html',
-        controller: 'MyController', // Angularcharts must be inside named controller?
+        controller: 'progressController', // Only seems to function under a named controller
 })
-.controller("MyController", function ($scope, $cookies, $http, UserData) {
+.controller("progressController", function ($scope, $cookies, $http, UserData) {
 
             var loggedIn = $cookies.get("token")
             if (loggedIn == null){
@@ -51,10 +51,14 @@ angular.module('progressView').component('progressView', {
 
                 $scope.selectedExercise = [1, "benchpress 5x5"];
 
-                $scope.$watch('selectedExercise', function(){
+                $scope.progressList = []
+
+
+                var genGraph = function(){
                     // Reset graph data
                     $scope.data = [[]]
                     $scope.labels = []
+                    $scope.series = [$scope.selectedExercise[1]];
                     // Sort data by date
                     $scope.exerciseData = UserData.userData(token).get({"username": username}, function(data){
                         data.sort(function(a,b){
@@ -63,15 +67,19 @@ angular.module('progressView').component('progressView', {
                                 return 0;
                         })
                         for(var i=0; i < data.length; i++){
+                            $scope.progressList.push([data[i].id,
+                                                   data[i].date + " " + data[i].exercise_name + " " + data[i].quantity])
                             if(data[i].exercise_id == $scope.selectedExercise[0]){
                                 $scope.data[0].push(data[i].quantity)
                                 $scope.labels.push(data[i].date)
                             }
                         }
                     })
-                })
+                }
 
-               $scope.postProgress = function(){
+                $scope.$watch('selectedExercise', genGraph)
+
+                $scope.postProgress = function(){
                     $scope.postSuccMsg = ""
                     $scope.postErrMsg = ""
                     $http.post('/api/progress/', {
@@ -81,14 +89,35 @@ angular.module('progressView').component('progressView', {
                         "user": "http://localhost:8000/api/users/1/"
                         }, {headers:{"Authorization": "JWT " +token}}).then(function(response){
                             $scope.postSuccMsg = response.statusText
+                            genGraph()
                         }, function(response){
                             $scope.postErrMsg = response.statusText})
+                }
+
+               $scope.deleteProgress = function(){
+                    if($scope.selectedProgress){
+                        for(var i=0; i<$scope.selectedProgress.length; i++){
+                            $http({
+                                method: 'DELETE',
+                                url: '/api/progress/' + $scope.selectedProgress[i][0] + '/',
+                                headers: {
+                                    "Authorization": "JWT " + token
+                                }
+                            }).then(function(response){
+                                // Display success msg
+                                $scope.deleteSuccMsg = response.statusText
+                                genGraph()
+                            }, function(response){
+                                // Display something went wrong
+                                $scope.deleteErrMsg = response.statusText
+                            })
+                        }
+                    } else {
+                        // Show error msg
+                    }
                }
 
-               $scope.series = ['Series A'];
-               $scope.onClick = function (points, evt) {
-               console.log(points, evt);
-               };
+              $scope.series = [$scope.selectedExercise[1]];
               // $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
               $scope.options = {
                 scales: {
