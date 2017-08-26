@@ -9,7 +9,7 @@ angular.module('accountView').component('accountView', {
                 "id": $scope.routineID
             }, function(success){
                 var increment = Math.round(7 / routine.days_per_week);
-                var daysOfWeek = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+                var daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
                 var exampleWeek = {"Mon": [" ",["Rest"]], "Tue": [" ",["Rest"]], "Wed": [" ",["Rest"]],
                                    "Thu": [" ",["Rest"]], "Fri": [" ",["Rest"]], "Sat": [" ",["Rest"]],
                                    "Sun": [" ",["Rest"]]};
