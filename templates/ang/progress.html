@@ -10,11 +10,11 @@
 <div ng-controller="progressController" ng-if="!errors">
    <!-- Graph filter -->
    <div class="col-md-8 ">
-      <label for="exlist">
-         <p>Visualise progress for:</p>
+      <label>
+         <h3>Visualise progress for:</h3>
       </label>
       <select ng-model="selectedExercise"
-         ng-options="exercise[1] for exercise in exercises" class="form-control" id="exlist">
+         ng-options="exercise[1] for exercise in exercises" class="form-control">
          <option value="exercise[0]">Select</option>
       </select>
       <canvas id="line" class="chart chart-line" chart-data="data"
@@ -26,31 +26,32 @@
    <!-- Exercise list -->
    <div class="col-md-4">
       <div class="alert alert-danger" ng-if="postErrMsg">
-         <strong>Error: Please make sure the date and quantity are valid.</strong>
+         <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+             Error: Please make sure the date and quantity are valid.</strong>
       </div>
       <div class="alert alert-success" ng-if="postSuccMsg">
-         <strong>Added</strong>
+         <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Added</strong>
       </div>
       <form name="myForm" ng-submit="postProgress()">
-         <label for="exlist">
-            <p>Add progress: </p>
+         <label>
+            <h3>Add progress: </h3>
          </label>
          <select ng-model="postExercise"
-            ng-options="exercise[1] for exercise in allExercises" class="form-control" id="exlist">
+            ng-options="exercise[1] for exercise in allExercises" class="form-control">
             <option value="exercise[0]">Select</option>
          </select>
          <!-- Quantity text field -->
          <label>
             <p>Quantity:</p>
          </label>
-         <input type="text" name="input" ng-model="postQuantity"
-            ng-pattern="example.word" required ng-trim="false" class="form-control">
+         <input type="text" ng-model="postQuantity"
+             required ng-trim="false" class="form-control">
          <br>
          <!-- Date field -->
-         <label for="test2">
+         <label>
             <p>Date:</p>
          </label>
-         <input type="date" id="exampleInput" name="input" ng-model="postDate"
+         <input type="date" ng-model="postDate"
             placeholder="yyyy-MM-dd" class="form-control" id="test2" required />
          <!-- Submit -->
          <input type="submit" class="btn btn-primary" value="Submit" />
@@ -58,17 +59,17 @@
    </div>
    <!-- Delete progress -->
    <div class="deleteProgress col-md-4">
-      <h3>Delete past progress</h3>
+      <h3>Delete past progress:</h3>
       <div class="alert alert-danger" ng-if="deleteErrMsg">
-         <strong>Something went wrong</strong>
+         <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Something went wrong</strong>
       </div>
       <div class="alert alert-success" ng-if="deleteSuccMsg">
-         <strong>Successfully deleted</strong>
+         <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Successfully deleted</strong>
       </div>
       <select multiple ng-model="selectedProgress"
          ng-options="progress[1] for progress in progressList" class="form-control" id="exlist">
          <option value="exercise[0]">Select</option>
       </select>
-      <button type="button" class="btn" ng-click="deleteProgress()">Delete</button>
+      <button type="button" class="btn btn-primary" ng-click="deleteProgress()">Delete</button>
    </div>
 </div>

@@ -59,5 +59,10 @@ h1{
 }
 
 .deleteProgress{
-
+    float:right;
 }
+
+.tableHeader{
+    color: black;
+}
+

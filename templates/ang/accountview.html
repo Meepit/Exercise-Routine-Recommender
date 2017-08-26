@@ -38,4 +38,19 @@
         <input type='submit' value='Submit' class="btn btn-primary" />
     </form>
 </div>
+
+    <div class="routineTable col-md-12">
+    <center><h2>My Routine: </h2></center>
+        <table class="table table-striped">
+            <tr>
+                <th ng-repeat="day in daysOfWeek" class="tableHeader">{{day}}</th>
+            </tr>
+            <tr>
+            <td ng-repeat="(key,data) in exampleWeek">
+                <p ng-repeat="exercise in data[1]"> {{exercise}} </p>
+            </td>
+            </tr>
+        </table>
+    </div>
+
 </div>
