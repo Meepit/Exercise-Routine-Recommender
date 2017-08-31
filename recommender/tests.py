@@ -1,11 +1,32 @@
 from django.urls import reverse
 from rest_framework.test import APIRequestFactory, APITestCase, force_authenticate
-from user_profiles.tests import create_user_data
 from django.contrib.auth.models import User
 import json
 from user_profiles.models import Profile
 from user_profiles.views import UserDetail
 from recommender.models import Routine, Exercise, Workout
+
+
+def create_user_data(*args, default=False, **kwargs):
+    """
+    Create user data.
+    default=True will return valid user data
+    """
+    if default:
+        return create_user_data(username="testuser",
+                                password="thisisatestpw",
+                                first_name="testname",
+                                email="testemail@testmail.co.za")
+    data = {
+        "username": "",
+        "password": "",
+        "first_name": "",
+        "email": ""
+    }
+    for i in kwargs.keys():
+        if i in data.keys():
+            data[i] = kwargs[i]
+    return data
 
 
 def create_routines():
@@ -28,35 +49,5 @@ def create_routines():
     return routine1
 
 
-class RoutineTests(APITestCase):
-    def test_routine_assignment(self):
-        """
-        Test that routine objects can be successfully created and assigned to user profiles
-        Test that profile serializer correctly displays
-        """
-        create_routines()
-        data = create_user_data(default=True)
-        url = reverse('user-create')
-        self.client.post(url, data, format='json')
-        profile = Profile.objects.get(user__id=1)
-        self.assertEqual(profile.routine, None)
-        #self.client.patch(reverse('user-detail'), {"routine": Routine.objects.get(pk=1)}, format='json')
-        profile.routine = Routine.objects.get(pk=1)
-        profile.save()
-        self.assertEqual(profile.routine, Routine.objects.get(pk=1))
-        factory = APIRequestFactory()
-        user = User.objects.get(username=data["username"])
-        view = UserDetail.as_view()
-        request = factory.get('/api/users')
-        force_authenticate(request, user=user)
-        response = view(request, pk=user.pk)
-        response_content = response.render().content.decode('utf8')
-        response_content = json.loads(response_content)
-        self.assertEqual(response_content["routine"], "http://testserver/api/routines/1/")
 
 """Classification tests run outside test environment"""
-
-
-
-
-

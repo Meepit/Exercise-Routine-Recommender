@@ -124,7 +124,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_jwt.authentication.JSONWebTokenAuthentication',
                                        'rest_framework.authentication.SessionAuthentication',
                                        'rest_framework.authentication.BasicAuthentication',),
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1800)
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=432000)
 }
 
 

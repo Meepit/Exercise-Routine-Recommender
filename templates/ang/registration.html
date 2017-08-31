@@ -1,76 +1,71 @@
 <div class="jumbotron">
-   <h1><center>Register</center></h1>
+   <h1>
+      <center>Register</center>
+   </h1>
 </div>
-
-
 <div class="form col-md-6 col-md-offset-3">
-
-    <div ng-if="registerErrors" class="alert alert-danger">
-        <div ng-repeat="error in registerErrors">
-            <strong>{{error}}</strong>
-        </div>
-    </div>
-
-    <form name="registrationForm" ng-submit="registerUser()">
-      <label><p>*First name:</p></label>
-        <input type="text" name="firstName" ng-model="userData.firstName"
-          ng-pattern="charRestrict" required ng-trim="false" class="form-control" required>
-        <div class="field-message" ng-messages="registrationForm.firstName.$error">
-            <div ng-message="required">First name is required</div>
-            <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
-        </div>
+   <div ng-if="registerErrors" class="alert alert-danger">
+      <div ng-repeat="error in registerErrors">
+         <strong>{{error}}</strong>
+      </div>
+   </div>
+   <form name="registrationForm" ng-submit="registerUser()">
+      <label>
+         <p>*First name:</p>
+      </label>
+      <input type="text" name="firstName" ng-model="userData.firstName"
+         ng-pattern="charRestrict" required ng-trim="false" class="form-control" required>
+      <div class="field-message" ng-messages="registrationForm.firstName.$error">
+         <div ng-message="required">First name is required</div>
+         <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
+      </div>
       <br>
-
-      <label><p>*Username:</p></label>
-        <input type="text" name="username" ng-model="userData.username"
-          ng-pattern="charRestrict" required ng-trim="false" class="form-control" required>
-        <div class="field-message" ng-messages="registrationForm.username.$error">
-            <div ng-message="required">Username is required</div>
-            <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
-        </div>
+      <label>
+         <p>*Username:</p>
+      </label>
+      <input type="text" name="username" ng-model="userData.username"
+         ng-pattern="charRestrict" required ng-trim="false" class="form-control" required>
+      <div class="field-message" ng-messages="registrationForm.username.$error">
+         <div ng-message="required">Username is required</div>
+         <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
+      </div>
       <br>
-
-      <label><p>*Password:</p></label>
-        <input type="password" name="password" ng-model="userData.password"
-          ng-pattern="charRestrict" required ng-trim="false" class="form-control" required ng-minlength="9">
-
-        <div class="field-message" ng-messages="registrationForm.password.$error">
-            <div ng-message="required">Password is required</div>
-            <div ng-message="minlength">Password must have at least 9 chars</div>
-            <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
-        </div>
-
+      <label>
+         <p>*Password:</p>
+      </label>
+      <input type="password" name="password" ng-model="userData.password"
+         ng-pattern="charRestrict" required ng-trim="false" class="form-control" required ng-minlength="9">
+      <div class="field-message" ng-messages="registrationForm.password.$error">
+         <div ng-message="required">Password is required</div>
+         <div ng-message="minlength">Password must have at least 9 chars</div>
+         <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
+      </div>
       <br>
-
-      <label><p>*Re-enter password:</p></label>
-        <input type="password" name="passwordCheck" ng-model="userData.passwordVerify"
-          ng-pattern="charRestrict" required ng-trim="false" class="form-control" required ng-minlength="9" password-check="userData.password">
-
-        <div class="field-message" ng-messages="registrationForm.passwordCheck.$error">
-            <div ng-message="required">Password is required</div>
-            <div ng-message="minlength">Password must have at least 9 chars</div>
-            <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
-            <div ng-message="passwordCheck">Passwords must match</div>
-        </div>
-
-       <br>
-
-      <label><p>*Email:</p></label>
-        <input type="email" name="email" ng-model="userData.email"
-          ng-pattern="example.word" required ng-trim="false" class="form-control" required>
-
-          <div class="field-message" ng-messages="registrationForm.email.$error">
-              <div ng-message="required">Email is required</div>
-              <div ng-message="email">Must be a valid email</div>
-              <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
-          </div>
-
-       <br>
-
-        <!-- Submit -->
-
-        <button type="submit" class="btn btn-primary"
-                ng-disabled="registrationForm.$invalid">Submit</button>
-    </form>
-
+      <label>
+         <p>*Re-enter password:</p>
+      </label>
+      <input type="password" name="passwordCheck" ng-model="userData.passwordVerify"
+         ng-pattern="charRestrict" required ng-trim="false" class="form-control" required ng-minlength="9" password-check="userData.password">
+      <div class="field-message" ng-messages="registrationForm.passwordCheck.$error">
+         <div ng-message="required">Password is required</div>
+         <div ng-message="minlength">Password must have at least 9 chars</div>
+         <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
+         <div ng-message="passwordCheck">Passwords must match</div>
+      </div>
+      <br>
+      <label>
+         <p>*Email:</p>
+      </label>
+      <input type="email" name="email" ng-model="userData.email"
+         ng-pattern="example.word" required ng-trim="false" class="form-control" required>
+      <div class="field-message" ng-messages="registrationForm.email.$error">
+         <div ng-message="required">Email is required</div>
+         <div ng-message="email">Must be a valid email</div>
+         <div ng-message="pattern"> Cannot contain {}()<>'"/\;: </div>
+      </div>
+      <br>
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary"
+         ng-disabled="registrationForm.$invalid">Submit</button>
+   </form>
 </div>

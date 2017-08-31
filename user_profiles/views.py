@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from user_profiles.models import Profile
 from progress.models import Progress
-from user_profiles.permissions import IsOwnerOrAdmin
+from user_profiles.permissions import IsOwner
 from user_profiles.serializers import ProfileSerializer, UserSerializer, UpdatePasswordSerializer
 from rest_framework import generics, renderers, permissions, status
 from rest_framework.response import Response
@@ -38,11 +38,9 @@ class UserDetail(generics.RetrieveUpdateAPIView):
     """
     Endpoint for getting and updating user data using username as a lookup field
     """
-    #authentication_classes = ()
-    #permission_classes = ()
     lookup_field = ('user__username')
-    #permission_classes = (IsOwnerOrAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
+    permission_classes = (IsOwner,)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
@@ -52,7 +50,7 @@ class ChangePassword(APIView):
     Endpoint for updating password.
     """
     authentication_classes = (JSONWebTokenAuthentication,)
-    #permission_classes = ()
+    permission_classes = (IsOwner,)
 
     def get_object(self, value, queryset=None):
         return User.objects.get(username=value)

@@ -9,13 +9,13 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 class ProgressList(generics.ListCreateAPIView):
     serializer_class = ProgressSerializer
-    permission_classes = (permissions.IsAuthenticated,)
     authentication_classes = (JSONWebTokenAuthentication,)
 
     def get_queryset(self):
         """
         Filters Progress objects for objects linked to the user
         Admins can see all progress
+        No need to set object permissions, queryset is based off request data.
         :return: filtered queryset
         """
         if self.request.user.is_superuser:

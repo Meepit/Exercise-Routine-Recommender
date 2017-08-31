@@ -10,7 +10,6 @@ class ExerciseSerializer(serializers.HyperlinkedModelSerializer):
 
 class WorkoutSerializer(serializers.HyperlinkedModelSerializer):
     exercises = ExerciseSerializer(many=True, read_only=True)
-    #exercises = serializers.HyperlinkedIdentityField(many=True, view_name='exercise-detail', format='html')
 
     class Meta:
         model = Workout
@@ -19,7 +18,6 @@ class WorkoutSerializer(serializers.HyperlinkedModelSerializer):
 
 class RoutineSerializer(serializers.HyperlinkedModelSerializer):
     workout = WorkoutSerializer(many=True, read_only=True)
-    #workout = serializers.HyperlinkedIdentityField(many=True, view_name='workout-detail', format='html')
 
     class Meta:
         model = Routine

@@ -1,41 +1,39 @@
 <div class="jumbotron">
-   <h1><center>{{routine.name}}</center></h1>
+   <h1>
+      <center>{{routine.name}}</center>
+   </h1>
    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
 </div>
-
 <div class="well">
-    <h2>Description: </h2>
-    <p>The Starting Strength System makes use of the body's most basic movement patterns – barbell exercises that involve all the body’s muscle mass – utilized over the longest effective range of motion and loaded progressively, to force the adaptations necessary for increased strength.
-
-Unlike other popular exercise protocols, Starting Strength is a training system – a long-term process designed for getting stronger over time, not a random collection of exercises that just make you hot, sweaty, sore, confused, and tired today.
-    </p>
-
+<h2>Description: </h2>
+<p>The Starting Strength System makes use of the body's most basic movement patterns – barbell exercises that involve all the body’s muscle mass – utilized over the longest effective range of motion and loaded progressively, to force the adaptations necessary for increased strength.
+   Unlike other popular exercise protocols, Starting Strength is a training system – a long-term process designed for getting stronger over time, not a random collection of exercises that just make you hot, sweaty, sore, confused, and tired today.
+</p>
 <h3>Info:</h3>
-    <p>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Routine type</th>
-                <th>Average session length</th>
-                <th>Days per week</th>
-            </tr>
-        </thead>
-        <tr>
-            <td ng-if="routine.routine_type == 0"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>Strength</td>
-            <td ng-if="routine.routine_type == 1"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>Hypertrophy</td>
-            <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{routine.session_length}} minutes</td>
-            <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{routine.days_per_week}}</td>
-        </tr>
-    </table>
-    </p>
-
+<p>
+<table class="table table-striped">
+   <thead>
+      <tr>
+         <th>Routine type</th>
+         <th>Average session length</th>
+         <th>Days per week</th>
+      </tr>
+   </thead>
+   <tr>
+      <td ng-if="routine.routine_type == 0"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>Strength</td>
+      <td ng-if="routine.routine_type == 1"><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>Hypertrophy</td>
+      <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{routine.session_length}} minutes</td>
+      <td><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{routine.days_per_week}}</td>
+   </tr>
+</table>
+</p>
 <h3>Exercises</h3>
 <div>
-    <div class="list-group">
-        <div class="list-group-item" ng-repeat="workout in routine.workout">
-            <h4 class="list-group-item-heading"><p>{{workout.name}}</p></h4>
-            <p class="list-group=item-text" ng-repeat="exercise in workout.exercises">{{exercise.name}}</p>
-	
-    </div>
+<div class="list-group">
+   <div class="list-group-item" ng-repeat="workout in routine.workout">
+      <h4 class="list-group-item-heading">
+         <p>{{workout.name}}</p>
+      </h4>
+      <p class="list-group=item-text" ng-repeat="exercise in workout.exercises">{{exercise.name}}</p>
+   </div>
 </div>
-

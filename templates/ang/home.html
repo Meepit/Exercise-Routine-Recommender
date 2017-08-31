@@ -1,13 +1,30 @@
 <div class="jumbotron">
-    <h1><center>RoutineFinder</center></h1>
+   <h1>
+      <center>RoutineFinder</center>
+   </h1>
+</div>
+<div class="routineTable col-md-12" ng-hide="hideRoutine">
+   <center>
+      <h2>My Routine: </h2>
+   </center>
+   <table class="table table-striped">
+      <tr>
+         <th ng-repeat="day in daysOfWeek" class="tableHeader">{{day}}</th>
+      </tr>
+      <tr>
+         <td ng-repeat="(key,data) in exampleWeek">
+            <p ng-repeat="exercise in data[1]"> {{exercise}} </p>
+         </td>
+      </tr>
+   </table>
 </div>
 <p>Selection of inefficient routines often leads to demotivation as a result of
-a lack of progress. Strength and hypertrophy exercise routines are well 
-studied and many well regarded routines incorporate the results in order to
-maximize their efficiencies.</p>
-
+   a lack of progress. Strength and hypertrophy exercise routines are well
+   studied and many well regarded routines incorporate the results in order to
+   maximize their efficiencies.
+</p>
 <p>This is a project that aims to help solve the issue of inefficient exercise
-routine selection by using decision tree classifiers to pick an exercise routine
-most suited to an individual's circumstances and goals.</p>
-
+   routine selection by using decision tree classifiers to pick an exercise routine
+   most suited to an individual's circumstances and goals.
+</p>
 <center><button type="button" class="btn" ng-click="goToClassification()">Get Routine</button> </center>

@@ -1,6 +1,5 @@
 <div class="jumbotron">
    <h1><center>{{username}}</center></h1>
-   <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
 </div>
 
 <div ng-if="errors" class="alert alert-danger">
@@ -32,25 +31,11 @@
     <h3>Change password</h3>
     <form ng-submit="updatePassword()">
         <label><p>Old password: </p></label>
-        <input type="password" ng-model="passwordChange.oldPassword" class="form-control" placeholder="Enter password">
+        <input type="password" ng-model="passwordChange.oldPassword" required class="form-control" placeholder="Enter password">
         <label><p>New password: </p></label>
-        <input type="password" ng-model="passwordChange.newPassword" class="form-control" placeholder="Enter password">
+        <input type="password" ng-model="passwordChange.newPassword"  required class="form-control" placeholder="Enter password">
         <input type='submit' value='Submit' class="btn btn-primary" />
     </form>
 </div>
-
-    <div class="routineTable col-md-12">
-    <center><h2>My Routine: </h2></center>
-        <table class="table table-striped">
-            <tr>
-                <th ng-repeat="day in daysOfWeek" class="tableHeader">{{day}}</th>
-            </tr>
-            <tr>
-            <td ng-repeat="(key,data) in exampleWeek">
-                <p ng-repeat="exercise in data[1]"> {{exercise}} </p>
-            </td>
-            </tr>
-        </table>
-    </div>
 
 </div>

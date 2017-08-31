@@ -1,50 +1,58 @@
 <div class="jumbotron">
-   <h1><center>Routine Generator</center></h1>
-   <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
+   <h1>
+      <center>Routine Generator</center>
+   </h1>
 </div>
-
 <div class="form col-md-6 col-md-offset-3" ng-hide="gotRoutine">
-
-    <form name="routineForm" ng-submit="postRoutine()">
-
-      <label> <p>Routine Type:</p> </label>
-      <select ng-model="routineData.routineType"
-            ng-options="type[1] for type in routineTypes" class="form-control" id="exlist">
-            <option value="type[0]">Select</option>
+   <form name="routineForm" ng-submit="postRoutine()">
+      <label>
+         <p>Routine Type:</p>
+      </label>
+      <select ng-model="routineData.routineType" required
+         ng-options="type[1] for type in routineTypes" class="form-control">
+         <option value="type[0]">Select</option>
       </select>
-
-      <label> <p>Equipment Availability:</p> </label>
-      <select ng-model="routineData.equipmentNeeded"
-            ng-options="type[1] for type in equipmentAvailability" class="form-control" id="exlist">
-            <option value="type[0]">Select</option>
+      <label>
+         <p>Equipment Availability:</p>
+      </label>
+      <select ng-model="routineData.equipmentNeeded" required
+         ng-options="type[1] for type in equipmentAvailability" class="form-control">
+         <option value="type[0]">Select</option>
       </select>
-
-      <label> <p>Days Per Week:</p> </label>
-      <select ng-model="routineData.daysPerWeek"
-            ng-options="day for day in daysPerWeek" class="form-control" id="exlist">
-            <option value="day">Select</option>
+      <label>
+         <p>Days Per Week:</p>
+      </label>
+      <select ng-model="routineData.daysPerWeek" required
+         ng-options="day for day in daysPerWeek" class="form-control">
+         <option value="day">Select</option>
       </select>
-
-      <label><p>Ideal Session Length (minutes):</p></label>
-        <input type="text" name="input" ng-model="routineData.sessionLength"
-          ng-pattern="example.word" required ng-trim="false" class="form-control">
+      <label>
+         <p>Ideal Session Length (minutes):</p>
+      </label>
+      <input type="text" name="sessionLength" ng-model="routineData.sessionLength" required
+         ng-pattern="sessionLengthRestrict" required ng-trim="false" class="form-control">
+      <div class="field-message" ng-messages="routineForm.sessionLength.$error">
+         <div ng-message="pattern"> Must be at least 60</div>
+      </div>
       <br>
-
-      <label> <p>Most Important Field:</p> </label>
-      <select ng-model="routineData.priorityField"
-            ng-options="field[1] for field in priorityField" class="form-control" id="exlist">
-            <option value="field[0]">Select</option>
+      <label>
+         <p>Most Important Field:</p>
+      </label>
+      <select ng-model="routineData.priorityField" required
+         ng-options="field[1] for field in priorityField" class="form-control">
+         <option value="field[0]">Select</option>
       </select>
-
-        <!-- Submit -->
-      <input type="submit" class="btn btn-primary" value="Submit" />
-    </form>
-
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary"
+         ng-disabled="routineForm.$invalid">Submit</button>
+   </form>
 </div>
-
 <div ng-show="gotRoutine" class="col-md-6 col-md-offset-3 alert alert-success">
-    <h2 class="suggestion"><center>Suggested routine:<br> {{chosenRoutine}}</h2>
-    <p class="col-md-offset-3"><a class="btn btn-primary btn-lg" href="routines/{{chosenRoutineID}}" role="button">More info</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button" ng-click="saveRoutine()">Save Routine</a></p>
-    </center>
+   <h2 class="suggestion">
+      <center>
+         Suggested routine:<br> {{chosenRoutine}}
+   </h2>
+   <p class="col-md-offset-3"><a class="btn btn-primary btn-lg" href="routines/{{chosenRoutineID}}" role="button">More info</a>
+   <a class="btn btn-primary btn-lg" href="#" role="button" ng-click="saveRoutine()">Save Routine</a></p>
+   </center>
 </div>

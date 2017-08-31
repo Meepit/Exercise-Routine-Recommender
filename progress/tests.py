@@ -64,3 +64,17 @@ class ProgressTests(APITestCase):
         response_content = json.loads(response_content)
         self.assertEqual(response_content["detail"], "Authentication credentials were not provided.")
 
+    def test_progress_validation(self):
+        self.create_test_user_and_routine()
+        data = {
+            "quantity": "abc",
+            "exercise": reverse('exercise-detail', args=[1]),
+            "user": reverse('user-detail', args=[1])
+        }
+        factory = APIRequestFactory()
+        view = ProgressList.as_view()
+        request = factory.post('/api/progress/', data)
+        force_authenticate(request, user=User.objects.get(pk=1))
+        response = view(request).render()
+        response_content = response.content.decode('utf8')
+        self.assertIn("integer is required", response_content)

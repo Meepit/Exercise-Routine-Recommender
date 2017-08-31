@@ -11,7 +11,9 @@ from recommender.choices import *
 '''
 Tables: Workout, Routine, Exercise
 '''
+# SET TO DIRECTORY PROJECT IS INSTALLED In
 CLASSIFIERS_PATH = os.path.join('/home', 'M33PIT', 'Exercise-app', 'Exercise-Routine-Recommender', 'recommender', 'classifiers/')
+#CLASSIFIERS_PATH = os.path.join('recommender', 'classifiers/')
 
 class Exercise(models.Model):
     """

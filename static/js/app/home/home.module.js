@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('homeView', []);
+angular.module('homeView', ["data"]);

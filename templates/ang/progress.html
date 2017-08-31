@@ -2,7 +2,6 @@
    <h1>
       <center>Progress</center>
    </h1>
-   <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
 </div>
 <div ng-if="errors" class="alert alert-danger">
    <strong>{{errors}}</strong>
@@ -27,7 +26,7 @@
    <div class="col-md-4">
       <div class="alert alert-danger" ng-if="postErrMsg">
          <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-             Error: Please make sure the date and quantity are valid.</strong>
+         Error: Please make sure the date and quantity are valid.</strong>
       </div>
       <div class="alert alert-success" ng-if="postSuccMsg">
          <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Added</strong>
@@ -45,14 +44,14 @@
             <p>Quantity:</p>
          </label>
          <input type="text" ng-model="postQuantity"
-             required ng-trim="false" class="form-control">
+            required ng-trim="false" class="form-control">
          <br>
          <!-- Date field -->
          <label>
             <p>Date:</p>
          </label>
          <input type="date" ng-model="postDate"
-            placeholder="yyyy-MM-dd" class="form-control" id="test2" required />
+            placeholder="yyyy-MM-dd" class="form-control" required />
          <!-- Submit -->
          <input type="submit" class="btn btn-primary" value="Submit" />
       </form>

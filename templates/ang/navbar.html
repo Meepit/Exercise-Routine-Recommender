@@ -16,14 +16,14 @@ $(document).ready(function () {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" ng-href="/">RoutineFinder</a>
+            <a class="navbar-brand" ng-href="/" ng-click="checkToken(false)">RoutineFinder</a>
         </div>
         <div id="myNavbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a ng-href="/recommend">Get routine</a></li>
-                <li><a ng-href="/my-account" ng-show='loggedIn'>My account</a></li>
-                <li><a ng-href="/routines">Routines</a></li>
-                <li><a ng-href="/progress" ng-show='loggedIn'>Progress</a></li>
+                <li><a ng-href="/recommend" ng-click="checkToken(false)">Get routine</a></li>
+                <li><a ng-href="/my-account" ng-show='loggedIn' ng-click="checkToken(true)">My account</a></li>
+                <li><a ng-href="/routines" ng-click="checkToken(false)">Routines</a></li>
+                <li><a ng-href="/progress" ng-show='loggedIn' ng-click="checkToken(true)">Progress</a></li>
                 <li><a ng-href="/login" ng-hide='loggedIn'>Login</a></li>
                 <li><a ng-href="/login" ng-show='loggedIn'>Logout</a></li>
                 <li><a ng-href="/register" ng-hide='loggedIn'>Register</a></li>

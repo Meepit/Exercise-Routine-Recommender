@@ -18,6 +18,7 @@ from django.contrib import admin
 from rest_framework_jwt.views import obtain_jwt_token
 
 from ang.views import AngularTemplateView
+from security.views import PollAuthenticationView
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
@@ -25,15 +26,10 @@ urlpatterns = [
     url(r'^api/', include('recommender.urls')),
     url(r'^api/', include('progress.urls')),
     url(r'^api/', include('user_profiles.urls')),
-    url(r'auth/token/$', obtain_jwt_token),  # Creates token on post for token based authentication
+    url(r'^api/auth/token/$', obtain_jwt_token),  # Creates token on post for token based authentication
+    url(r'api/poll/', PollAuthenticationView.as_view(), name='poll-authentication'),
     url(r'^api/templates/(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AngularTemplateView.as_view()),
 
 ]
 
 urlpatterns += [url(r'^', TemplateView.as_view(template_name='ang/index.html'))]  # Add angular index page
-
-# Login and logout views for the browsable API
-#urlpatterns += [
-#    url(r'^api-auth/', include('rest_framework.urls',
-#                               namespace='rest_framework')),
-#]
